@@ -1,46 +1,48 @@
-class Point{
-    private int x,y;
-    public Point(int x,int y) {this.x=x;this.y=y;}
-    public int getX() {return x;}
-    public int getY() {return y;}
-    protected void move(int x,int y) {
-        this.x=x;
-        this.y=y;
+import java.util.Calendar;
+import java.util.Scanner;
+
+class Person {
+    Calendar now = Calendar.getInstance();
+    Scanner sc = new Scanner(System.in);
+    private String name, buffer;
+    private int sec1, sec2;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public int game() {
+        System.out.print(name+" 시작 <Enter>키  >>");
+        sec1 = enter();
+        System.out.print("10초 예상 후 <Enter>키  >>");
+        sec2 = enter();
+        if(sec1 < sec2)
+            return sec2-sec1;
+        else
+            return (60-sec1) + sec2;
+    }
+
+
+    public int enter() {
+        buffer = sc.nextLine();
+        now = Calendar.getInstance();
+        System.out.println("\t현재 초 시간 = "+ now.get(Calendar.SECOND));
+        return now.get(Calendar.SECOND);
     }
 }
 
-class ColorPoint extends Point{
-    String color;
-    public ColorPoint() {
-        super(0,0);
-        color="BLACK";
-    }
-    public ColorPoint(int x,int y) {
-        super(x,y);
-        color="BLACK";
-    }
-    public ColorPoint(int x,int y,String color) {
-        super(x,y);
-        this.color=color;
-    }
-    public void setXY(int x,int y) {
-        move(x,y);
-    }
-    public void setColor(String color) {
-        this.color=color;
-    }
-    public String toString() {
-        return color+"색의 ("+getX()+","+getY()+")의 점";
-    }
-}
 public class ex6 {
     public static void main(String[] args) {
-        ColorPoint zeroPoint = new ColorPoint();
-        System.out.println(zeroPoint.toString()+"입니다.");
+        Person person1 = new Person("황기태");
+        Person person2 = new Person("이재문");
 
-        ColorPoint cp=new ColorPoint(10,10);
-        cp.setXY(5, 5);
-        cp.setColor("RED");
-        System.out.println(cp.toString()+"입니다.");
+        System.out.println("10초에 가까운 사람이 이기는 게임입니다.");
+        int result1 = person1.game();
+        int result2 = person2.game();
+
+        if(Math.abs(result1 - 10) < Math.abs(result2 - 10))
+            System.out.println("황기태의 결과 "+result1+", 이재문의 결과 "+result2+", 승자는 황기태");
+        else
+            System.out.println("황기태의 결과 "+result1+", 이재문의 결과 "+result2+", 승자는 이재문");
     }
 }
