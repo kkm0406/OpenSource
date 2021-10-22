@@ -29,5 +29,6 @@ public class ex7_8 {
             printList(myList); // 요소 출력
             int index = Collections.binarySearch(myList, "아바타") + 1;
             System.out.println("아바타는 " + index + "번째 요소입니다.");
+        
     }
 }
