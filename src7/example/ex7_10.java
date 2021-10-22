@@ -27,20 +27,18 @@ public class ex7_10 {
         GStack2<T> s = new GStack2<T>();
         while (true) {
             T tmp;
-            tmp = a.pop(); // 원래 스택에서 요소 하나를 꺼냄
-            if (tmp == null) // 스택이 비었음
+            tmp = a.pop(); 
+            if (tmp == null) 
                 break;
             else
-                s.push(tmp); // 새 스택에 요소를 삽입
+                s.push(tmp); 
         }
         return s;
-    }// 새 스택을 반환
+    }
 
     public static void main(String[] args) {
-// Double 타입의 GStack 생성
         GStack2<Double> gs =
                 new GStack2<Double>();
-// 5개의 요소를 스택에 push
         for (int i = 0; i < 5; i++) {
             gs.push(new Double(i));
         }
