@@ -32,5 +32,6 @@ public class ex7_9 {
             intStack.push(5);
             for(int n=0; n<3; n++)
                 System.out.println(intStack.pop());
+            
         }
 }
